@@ -12,6 +12,7 @@ import os
 import gdown  # <--- NEW IMPORT
 from pathlib import Path
 import shutil  # <--- NEW IMPORT
+import zipfile  # <--- Add this to your imports at the top
 
 st.set_page_config(layout="wide", page_title="Compare Activation Maps")
 
@@ -20,11 +21,53 @@ st.set_page_config(layout="wide", page_title="Compare Activation Maps")
 # 1. SETUP LOCAL PATH
 DATA_ROOT = Path("downloaded_data")
 
-# 2. YOUR GOOGLE DRIVE FOLDER ID
-# Replace this with the ID you copied in Phase 1
-DRIVE_FOLDER_ID = "1Vr4QPF4-Vb7tUAB6cvJTcWiDNX3OD5QT"
-#https://drive.google.com/drive/folders/1Vr4QPF4-Vb7tUAB6cvJTcWiDNX3OD5QT?usp=sharing
+# 2. YOUR *ZIP FILE* ID (NOT the folder ID)
+# Paste the ID of the 'fmri_data.zip' file here
+ZIP_FILE_ID = "1u61zPpdCjlPvTuwttGkCkPIOLXUFcnXS"
+#https://drive.google.com/file/d/1u61zPpdCjlPvTuwttGkCkPIOLXUFcnXS/view?usp=sharing
 
+@st.cache_resource
+def download_data_folder():
+    """Downloads and unzips data from Drive once at startup"""
+    if DATA_ROOT.exists():
+        # Check if not empty
+        if any(DATA_ROOT.iterdir()):
+            return True
+
+    st.warning("⏳ Downloading data... (This happens once)")
+
+    try:
+        # 1. Download the ZIP file
+        zip_path = "temp_data.zip"
+        gdown.download(id=ZIP_FILE_ID, output=zip_path, quiet=False)
+
+        # 2. Unzip it
+        st.info("📦 Unzipping data...")
+        with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+            zip_ref.extractall(DATA_ROOT)
+
+        # 3. Clean up
+        os.remove(zip_path)
+
+        st.success("✅ Data ready!")
+        return True
+
+    except Exception as e:
+        st.error(f"❌ Error: {e}")
+        # Cleanup if failed
+        if os.path.exists(zip_path):
+            os.remove(zip_path)
+        if DATA_ROOT.exists():
+            shutil.rmtree(DATA_ROOT)
+        st.stop()
+
+
+# Trigger download
+download_data_folder()
+
+
+# ======================= CONFIGURATION =======================
+# (The rest of your code remains the same)
 @st.cache_resource
 def download_data_folder():
     """Downloads data from Drive once at startup"""
