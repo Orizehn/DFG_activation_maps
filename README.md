@@ -30,15 +30,15 @@ This is the main Streamlit application file. Here's how to edit it:
    ```
 
 2. **Key sections to edit:**
-   - **Configuration (lines 19-50)**: Update Google Drive folder IDs, data paths
+   - **Configuration (near the top)**: Update Google Drive folder IDs, data paths
    - **Data loading functions**: Modify how data is downloaded and processed
    - **UI components**: Change the Streamlit interface elements
    - **Visualization settings**: Adjust plot parameters and layouts
 
 3. **Common edits:**
-   - Change Google Drive folder ID: Edit `DRIVE_FOLDER_ID` variable (line 25)
-   - Modify data directory: Edit `DATA_ROOT` variable (line 21)
-   - Update page layout: Edit `st.set_page_config()` parameters (line 16)
+   - Change Google Drive folder ID: Edit `DRIVE_FOLDER_ID` variable
+   - Modify data directory: Edit `DATA_ROOT` variable
+   - Update page layout: Edit `st.set_page_config()` parameters
 
 ### Editing Dependencies (`requirements.txt`)
 
@@ -89,7 +89,7 @@ To add or modify Python packages:
 
 #### Example 1: Change the app title
 ```python
-# Find this line (around line 16)
+# Find this line (near the top of the file)
 st.set_page_config(layout="wide", page_title="Compare Activation Maps")
 
 # Change to:
@@ -98,7 +98,7 @@ st.set_page_config(layout="wide", page_title="Your New Title")
 
 #### Example 2: Update Google Drive folder ID
 ```python
-# Find this line (around line 25)
+# Find this line (in the CLOUD DATA SETUP section)
 DRIVE_FOLDER_ID = "1Vr4QPF4-Vb7tUAB6cvJTcWiDNX3OD5QT"
 
 # Change to your folder ID:
