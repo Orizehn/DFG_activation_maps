@@ -109,14 +109,25 @@ DRIVE_FOLDER_ID = "your_folder_id_here"
 ```bash
 # Edit requirements.txt with your preferred editor:
 nano requirements.txt
+```
 
-# Add the package name on a new line (without the # symbol):
-# Example content of requirements.txt:
-# streamlit
-# numpy
-# new-package-name    <- Add your package here
+Add the package name on a new line. For example, if your requirements.txt currently contains:
+```
+streamlit
+numpy
+pandas
+```
 
-# Then install:
+Add your new package:
+```
+streamlit
+numpy
+pandas
+new-package-name
+```
+
+Then install the updated dependencies:
+```bash
 pip install -r requirements.txt
 ```
 
