@@ -66,28 +66,6 @@ def download_data_folder():
 download_data_folder()
 
 
-# ======================= CONFIGURATION =======================
-# (The rest of your code remains the same)
-@st.cache_resource
-def download_data_folder():
-    """Downloads data from Drive once at startup"""
-    if DATA_ROOT.exists():
-        return True
-
-    st.warning("⏳ Downloading data from Google Drive... This may take a minute.")
-    try:
-        DATA_ROOT.mkdir(parents=True, exist_ok=True)
-        gdown.download_folder(id=DRIVE_FOLDER_ID, output=str(DATA_ROOT), quiet=False, use_cookies=False)
-        st.success("✅ Data downloaded!")
-        return True
-    except Exception as e:
-        st.error(f"❌ Download failed: {e}")
-        if DATA_ROOT.exists(): shutil.rmtree(DATA_ROOT)
-        st.stop()
-
-
-# Trigger download immediately
-download_data_folder()
 
 # ======================= CONFIGURATION =======================
 
