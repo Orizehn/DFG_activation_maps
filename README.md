@@ -51,7 +51,8 @@ To add or modify Python packages:
 
 2. **Add new packages:**
    - Add one package per line
-   - Optionally specify versions: `package_name==1.2.3`
+   - Specify versions for reproducibility: `package_name==1.2.3` (recommended)
+   - Using exact versions ensures consistent environments across installations
 
 3. **After editing, reinstall dependencies:**
    ```bash
@@ -137,7 +138,7 @@ pip install -r requirements.txt
 - Use version control (git) to track your edits
 - Keep dependencies in `requirements.txt` up to date
 - Comment your code changes for better maintainability
-- The app uses Streamlit caching (`@st.cache_resource`) for performance
+- The app uses Streamlit caching (`@st.cache_resource`) for performance - if you modify data loading functions, you may need to restart the app or clear the cache to see your changes
 
 ### Getting Help
 
