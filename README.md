@@ -110,8 +110,11 @@ DRIVE_FOLDER_ID = "your_folder_id_here"
 # Edit requirements.txt with your preferred editor:
 nano requirements.txt
 
-# Add the package name on a new line:
-# new-package-name
+# Add the package name on a new line (without the # symbol):
+# Example content of requirements.txt:
+# streamlit
+# numpy
+# new-package-name    <- Add your package here
 
 # Then install:
 pip install -r requirements.txt
