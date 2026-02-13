@@ -107,8 +107,11 @@ DRIVE_FOLDER_ID = "your_folder_id_here"
 
 #### Example 3: Add a new Python package
 ```bash
-# Edit requirements.txt and add:
-echo "new-package-name" >> requirements.txt
+# Edit requirements.txt with your preferred editor:
+nano requirements.txt
+
+# Add the package name on a new line:
+# new-package-name
 
 # Then install:
 pip install -r requirements.txt
