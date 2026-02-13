@@ -114,17 +114,17 @@ nano requirements.txt
 
 Add the package name on a new line. For example, if your requirements.txt currently contains:
 ```
-streamlit
-numpy
-pandas
+streamlit==1.31.0
+numpy==1.24.3
+pandas==2.0.1
 ```
 
-Add your new package:
+Add your new package with version pinning:
 ```
-streamlit
-numpy
-pandas
-new-package-name
+streamlit==1.31.0
+numpy==1.24.3
+pandas==2.0.1
+new-package-name==1.0.0
 ```
 
 Then install the updated dependencies:
@@ -138,7 +138,9 @@ pip install -r requirements.txt
 - Use version control (git) to track your edits
 - Keep dependencies in `requirements.txt` up to date
 - Comment your code changes for better maintainability
-- The app uses Streamlit caching (`@st.cache_resource`) for performance - if you modify data loading functions, you may need to restart the app or clear the cache to see your changes
+- The app uses Streamlit caching (`@st.cache_resource`) for performance.
+  If you modify data loading functions, you may need to restart the app or
+  clear the cache to see your changes
 
 ### Getting Help
 
